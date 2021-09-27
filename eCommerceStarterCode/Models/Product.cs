@@ -14,9 +14,9 @@ namespace eCommerceStarterCode.Models
         public string Description { get; set; }
         public int AverageRating { get; set; }
 
-        [ForeignKey("Category")]
+        [ForeignKey("Categories")]
         public int CategoryID { get; set; }
-        public Category Category { get; set; }
+        public Categories Categories { get; set; }
 
         [ForeignKey("User")]
         public int UserId { get; set; }

@@ -8,11 +8,6 @@ namespace eCommerceStarterCode.Models
     public class Categories
     {
         public int CategoryID { get; set; }
-        public string  Tires { get; set; }
-        public string Mufflers { get; set; }
-        public string Rim { get; set; }
-        
-        
-
+        public string  Name { get; set; }
     }
 }
