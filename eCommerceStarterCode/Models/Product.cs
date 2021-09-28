@@ -18,13 +18,5 @@ namespace eCommerceStarterCode.Models
         public int CategoryID { get; set; }
         public Category Category { get; set; }
 
-        [ForeignKey("Customer")]
-        public int CustomerID { get; set; }
-        public Customer Customer { get; set; }
-
-        [ForeignKey("Review")]
-        public int ReviewID { get; set; }
-        public Review Review { get; set; }
-
     }
 }
