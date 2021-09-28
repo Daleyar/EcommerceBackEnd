@@ -12,10 +12,10 @@ namespace eCommerceStarterCode.Controllers
 {
     [Route("api/examples")]
     [ApiController]
-    public class ExamplesController : ControllerBase
+    public class ReviewController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        public ExamplesController(ApplicationDbContext context)
+        public ReviewController(ApplicationDbContext context)
         {
             _context = context;
         }

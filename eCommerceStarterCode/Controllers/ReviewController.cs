@@ -1,0 +1,65 @@
+﻿using eCommerceStarterCode.Data;
+using eCommerceStarterCode.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+
+namespace eCommerceStarterCode.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ReviewsController : ControllerBase
+    {
+        private readonly ApplicationDbContext _context;
+        public ReviewsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+        // <baseurl>/api/ReviewController
+        [HttpGet("{ReviewID}")]
+        public IActionResult GetReview(int id)
+        {
+            var reviews = _context.Reviews.Include(r => r.Product).Include(r => r.Customer).Where(review => review.ProductID == id);
+            return Ok(reviews);
+
+        }
+
+        //POST a new Review /api/ReviewController/
+        [HttpPost, Authorize]
+        public IActionResult Post([FromBody] Review value)
+        {
+            _context.Reviews.Add(value);
+            var product = _context.Products.FirstOrDefault(product => product.ProductID == value.ProductID);
+            _context.SaveChanges();
+            return Ok(value);
+
+        }
+
+        //PUT to modify review /api/ReviewController/{id}
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Review value)
+        {
+            var review = _context.Reviews.FirstOrDefault(review => review.ReviewID == id);
+        review.Rating = value.Rating;
+            _context.SaveChanges();
+            return Ok(review);
+    }
+
+        //DELETE /api/ReviewController/{id}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var review = _context.Reviews.FirstOrDefault(review => review.ReviewID == id);
+            _context.Remove(id);
+            _context.SaveChanges();
+            return Ok();
+        }
+    }
+}
+
