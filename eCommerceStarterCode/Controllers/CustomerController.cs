@@ -7,29 +7,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-
 namespace eCommerceStarterCode.Controllers
 {
-    [Route("api/examples")]
+    [Route("api/customer")]
     [ApiController]
-    public class ReviewController : ControllerBase
+    public class CustomerController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        public ReviewController(ApplicationDbContext context)
+        public CustomerController(ApplicationDbContext context)
         {
             _context = context;
         }
         // <baseurl>/api/examples/user
-        [HttpGet("user"), Authorize]
-        public IActionResult GetCurrentUser()
+        [HttpGet]
+        public IActionResult Get()
         {
-            var userId = User.FindFirstValue("id");
-            var user = _context.Users.Find(userId);
-            if(user == null)
-            {
-                return NotFound();
-            }
-            return Ok(user);
+            var customers = _context.Customers;
+            return Ok(customers);
         }
     }
 }
+
+
+
+
+
+
+
+Message ali daley, Kory Attleson, Stas Mironenko, Treveon Edwards
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
