@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace eCommerceStarterCode.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/review")]
     [ApiController]
     public class ReviewsController : ControllerBase
     {
@@ -23,7 +23,7 @@ namespace eCommerceStarterCode.Controllers
         }
         // <baseurl>/api/ReviewController
         [HttpGet("{ReviewID}")]
-        public IActionResult GetReview(int id)
+        public IActionResult Get(int id)
         {
             var reviews = _context.Reviews.Include(r => r.Product).Include(r => r.Customer).Where(review => review.ProductID == id);
             return Ok(reviews);
@@ -56,7 +56,7 @@ namespace eCommerceStarterCode.Controllers
         public IActionResult Delete(int id)
         {
             var review = _context.Reviews.FirstOrDefault(review => review.ReviewID == id);
-            _context.Remove(id);
+            _context.Remove(review);
             _context.SaveChanges();
             return Ok();
         }

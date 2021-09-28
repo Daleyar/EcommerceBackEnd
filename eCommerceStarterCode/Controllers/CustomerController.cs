@@ -34,7 +34,6 @@ namespace eCommerceStarterCode.Controllers
 
 
 
-Message ali daley, Kory Attleson, Stas Mironenko, Treveon Edwards
 
 
 
