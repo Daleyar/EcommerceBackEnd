@@ -14,13 +14,13 @@ namespace eCommerceStarterCode.Models
         public string Description { get; set; }
         public int AverageRating { get; set; }
 
-        [ForeignKey("Categories")]
+        [ForeignKey("Category")]
         public int CategoryID { get; set; }
-        public Categories Categories { get; set; }
+        public Category Category { get; set; }
 
-        [ForeignKey("User")]
-        public int UserId { get; set; }
-        public User User { get; set; }
+        [ForeignKey("Customer")]
+        public int CustomerID { get; set; }
+        public Customer Customer { get; set; }
 
         [ForeignKey("Review")]
         public int ReviewID { get; set; }

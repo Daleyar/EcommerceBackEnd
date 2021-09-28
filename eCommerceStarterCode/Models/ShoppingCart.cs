@@ -8,14 +8,14 @@ namespace eCommerceStarterCode.Models
 {
     public class ShoppingCart
     {
-        public int ShoppingCartId { get; set; }
+        public int ShoppingCartID { get; set; }
 
-        [ForeignKey("User")]
-        public int UserId { get; set; }
-        public User User { get; set; }
+        [ForeignKey("Customer")]
+        public int CustomerID { get; set; }
+        public Customer Customer { get; set; }
 
         [ForeignKey("Product")]
-        public int ProductId { get; set; }
+        public int ProductID { get; set; }
         public Product Product { get; set; }
 
         public int Quantity { get; set; }

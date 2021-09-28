@@ -8,17 +8,17 @@ namespace eCommerceStarterCode.Models
 {
     public class Review
     {
-        public int ReviewId { get; set; }
+        public int ReviewID { get; set; }
 
-        [ForeignKey("User")]
-        public int UserId { get; set; }
-        public User User { get; set; }
+        [ForeignKey("Customer")]
+        public int CustomerID { get; set; }
+        public Customer Customer { get; set; }
 
         public string Description { get; set; }
         public int Rating { get; set; }
 
         [ForeignKey("Product")]
-        public int ProductId { get; set; }
+        public int ProductID { get; set; }
         public Product Product { get; set; }
 
     }
