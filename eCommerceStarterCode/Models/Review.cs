@@ -10,9 +10,9 @@ namespace eCommerceStarterCode.Models
     {
         public int ReviewID { get; set; }
 
-        [ForeignKey("Customer")]
-        public int CustomerID { get; set; }
-        public Customer Customer { get; set; }
+        [ForeignKey("User")]
+        public int UserID { get; set; }
+        public User User { get; set; }
 
         public string Description { get; set; }
         public int Rating { get; set; }
