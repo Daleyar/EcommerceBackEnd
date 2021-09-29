@@ -21,6 +21,16 @@ namespace eCommerceStarterCode.Controllers
         {
             _context = context;
         }
+
+
+        //GET ALL REVIEWS (FOR TESTING)
+        [HttpGet]
+        public IActionResult Get()
+        {
+            var reviews = _context.Reviews;
+            return Ok(reviews);
+        }
+
         // <baseurl>/api/ReviewController
         [HttpGet("{ReviewID}")]
         public IActionResult Get(int id)
@@ -46,7 +56,8 @@ namespace eCommerceStarterCode.Controllers
         public IActionResult Put(int id, [FromBody] Review value)
         {
             var review = _context.Reviews.FirstOrDefault(review => review.ReviewID == id);
-        review.Rating = value.Rating;
+            review.Rating = value.Rating;
+            review.Description = value.Description; //FOR TESTING
             _context.SaveChanges();
             return Ok(review);
     }

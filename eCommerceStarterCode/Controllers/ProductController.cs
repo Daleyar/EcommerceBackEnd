@@ -57,8 +57,8 @@ namespace eCommerceStarterCode.Controllers
             product.Name = value.Name;
             product.Price = value.Price;
             product.Description = value.Description;
-            product.AverageRating = value.AverageRating;
-            product.CategoryID = value.CategoryID;
+            //product.AverageRating = value.AverageRating;
+            //product.CategoryID = value.CategoryID;
             _context.SaveChanges();
             return Ok(product);
         }
