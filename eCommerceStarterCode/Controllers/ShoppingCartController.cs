@@ -22,15 +22,23 @@ namespace eCommerceStarterCode.Controllers
         {
             _context = context;
         }
-
-        //GET
-        [HttpGet, Authorize]
+        
+        //GET ALL FOR TESTING ONLY PLEASE GOD DELETE
+        [HttpGet]
         public IActionResult Get()
         {
-            var shoppingCart = _context.ShoppingCarts.Include(eas => eas.Product.User) ;
-            var userShoppingCart = shoppingCart.Where(eas => eas.UserId == User.FindFirstValue("id"));
-            return Ok(userShoppingCart);
+            var allCarts = _context.ShoppingCarts;
+            return Ok(allCarts);
         }
+
+        //GET
+        //[HttpGet, Authorize]
+        //public IActionResult Get()
+        //{
+        //    var shoppingCart = _context.ShoppingCarts.Include(eas => eas.Product.User) ;
+        //    var userShoppingCart = shoppingCart.Where(eas => eas.UserId == User.FindFirstValue("id"));
+        //    return Ok(userShoppingCart);
+        //}
 
         // PUT api/shoppingcart
         [HttpPut, Authorize]
