@@ -41,7 +41,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
         //POST a new Review /api/ReviewController/
-        [HttpPost, Authorize]
+        [HttpPost]
         public IActionResult Post([FromBody] Review value)
         {
             _context.Reviews.Add(value);
