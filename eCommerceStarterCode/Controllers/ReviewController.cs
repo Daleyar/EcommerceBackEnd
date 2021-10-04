@@ -27,7 +27,7 @@ namespace eCommerceStarterCode.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var reviews = _context.Reviews;
+            var reviews = _context.Reviews.Include("Product").Include("User");
             return Ok(reviews);
         }
 
