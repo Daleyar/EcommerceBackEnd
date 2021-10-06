@@ -21,17 +21,27 @@ namespace eCommerceStarterCode.Controllers
         {
             _context = context;
         }
+
+
+        //GET ALL REVIEWS (FOR TESTING)
+        [HttpGet]
+        public IActionResult Get()
+        {
+            var reviews = _context.Reviews.Include("Product").Include("User");
+            return Ok(reviews);
+        }
+
         // <baseurl>/api/ReviewController
         [HttpGet("{ReviewID}")]
         public IActionResult Get(int id)
         {
-            var reviews = _context.Reviews.Include(r => r.Product).Include(r => r.Customer).Where(review => review.ProductID == id);
+            var reviews = _context.Reviews.Include(r => r.Product).Include(r => r.User).Where(review => review.ProductID == id);
             return Ok(reviews);
 
         }
 
         //POST a new Review /api/ReviewController/
-        [HttpPost, Authorize]
+        [HttpPost]
         public IActionResult Post([FromBody] Review value)
         {
             _context.Reviews.Add(value);
@@ -46,7 +56,8 @@ namespace eCommerceStarterCode.Controllers
         public IActionResult Put(int id, [FromBody] Review value)
         {
             var review = _context.Reviews.FirstOrDefault(review => review.ReviewID == id);
-        review.Rating = value.Rating;
+            review.Rating = value.Rating;
+            review.Description = value.Description; //FOR TESTING
             _context.SaveChanges();
             return Ok(review);
     }
